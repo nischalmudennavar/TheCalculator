@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    <title>TheCalculator</title>
+
+    <script>
+        
+        function insert(num)
+        {
+            document.forms.textview.value=document.forms.textview.value+num;
+        }
+        function equals(){
+
+            var exp= document.forms.textview.value;
+            if(exp)
+            {
+                document.forms.textview.value= eval(exp);
+            }else{
+                alert("math error");
+            }
+           
+        }
+        function clean()
+            {
+                document.forms.textview.value=""
+            }
+            function back(){
+
+                var exp =  document.forms.textview.value;
+                document.forms.textview.value=exp.substring(0,exp.length-1)
+            }
+    </script>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            font-family: monospace;
+            
+        }
+        body{
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background: rgb(0, 0, 0);
+        }
+        .button{
+            width:60px;
+            height:60px;
+            margin: 4px;
+            font-size: 25px;
+            border-radius: 13px;;
+            cursor: pointer;
+            transition:1ms ease-in;
+            border:2px solid #ddd;
+            background: rgba(255, 255, 255, 0.507);
+            
+        }
+        .button:hover{
+
+            box-shadow: 0px 0px 5px 3px rgb(28, 164, 255);
+
+        }
+        @font-face {
+            font-family: digital;
+            src: url(digital.ttf);
+        }
+
+        .textview{
+            width:260px;
+            margin:10px;
+            height:65px;
+            font-size: 40px;
+            border:3px solid rgb(255, 255, 255);
+            border-radius: 10px;
+            margin-top:50px;
+            color:#fff;
+            font-family:digital;
+            background: rgba(145, 145, 145, 0.37);
+           
+        }
+        .textview:focus{
+            background: rgba(0, 21, 114, 0.37);
+        }
+        .main{
+            
+            
+            height:550px ;
+            width:310px;
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            flex-direction: column;
+            background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec);
+            margin-top:1px;
+            border-radius: 20px;
+          
+            animation: helloCalculator 1s ease-in;
+            
+            
+        }
+        @keyframes helloCalculator {
+
+            0%{
+                transform: translateY(50px);
+                opacity: 0;
+            }100%{
+                opacity: 1;
+                transform: inherit;
+
+            }
+            
+        }
+        
+    </style>
+</head>
+<body>
+           <h1 style="color:#fff;font-weight:100;font-size:2em;text-align:center;margin-top:-5px;"> My first Calculator project</h1> 
+           <br>
+          
+          <div class="main">
+            
+              <form name="forms">
+                  <input class="textview " type="text" name="textview" >
+              </form>
+             
+              <table>
+                  <tr>
+                      <td><input class="button" type="button" value="c" onclick="clean()"></td>
+                      <td><input class="button" type="button" value="<" onclick="back()"></td>
+                      <td><input class="button" type="button" value="/" onclick="insert('/')"></td>
+                      <td><input class="button" type="button" value="X" onclick="insert('*')"></td>
+                  </tr>
+                  <tr>
+                      <td><input class="button" type="button" value="7" onclick="insert(7)"></td>
+                      <td><input class="button" type="button" value="8" onclick="insert(8)"></td>
+                      <td><input class="button" type="button" value="9" onclick="insert(9)"></td>
+                      <td><input class="button" type="button" value="-" onclick="insert('-')"></td>
+                  </tr>
+                  <tr> 
+                      <td><input class="button" type="button" value="4" onclick="insert(4)"></td>
+                      <td><input class="button" type="button" value="5" onclick="insert(5)"></td>
+                      <td><input class="button" type="button" value="6" onclick="insert(6)"></td>
+                      <td rowspan="2"><input class="button"  type="button" value="+" style=" margin-top:6px;height:130px;" onclick="insert('+')"></td>
+                  </tr>
+                  <tr>
+                      <td><input class="button" type="button" value="1" onclick="insert(1)" </td>
+                      <td><input class="button" type="button"  value="2" onclick="insert(2)" ></td>
+                      <td><input class="button" type="button" value="3" onclick="insert(3)" ></td>
+                    
+                  </tr>
+                  <tr>
+                      <td><input class="button" type="button" value="0" onclick="insert(0)" </td>
+                      <td><input class="button" type="button"  value="." onclick="insert('.')" ></td>
+                     
+                      <td colspan="3"><input class="button" style= "width:130px" type="button"value="=" onclick="equals()" ></td>
+                      
+                  </tr>
+              </table>
+
+              <h1 style="margin-top:30px;color:rgb(255, 255, 255);margin-bottom:40px;font-weight:100;">TheCalculator</h1>
+          </div>  
+</body>
+</html>
